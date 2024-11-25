@@ -1,0 +1,61 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7784/7784482.png">
+    <meta name="robots" content="noindex, follow" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Temple Run 2 - Games - The HTML Project SL</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+        .footer {
+            position: sticky;
+            top: 0;
+            width: 20%;
+            background-color: grey;
+            color: white;
+            text-align: center;
+        }
+        .game {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Temple Run 2</h2>
+    <div class="container">
+        <!-- iframe Game -->
+        <div class="game">
+            <iframe class="gm-iframe" id="gm-area" src="https://23azostore.github.io/s8/temple-run-2/" width="1070" height="540" scrolling="none" frameborder="0" allowfullscreen></iframe>
+            <div style="padding-top: 10px;"> 
+                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" onclick="openFullscreen();">Full Screen</button>
+            </div>
+            <script>
+                var elem = document.getElementById("gm-area");
+                function openFullscreen() {
+                    if (elem.requestFullscreen) {
+                        elem.requestFullscreen();
+                    } else if (elem.webkitRequestFullscreen) { /* Safari */
+                        elem.webkitRequestFullscreen();
+                    } else if (elem.msRequestFullscreen) { /* IE11 */
+                        elem.msRequestFullscreen();
+                    }
+                }
+            </script>
+            <p>
+I was looking for roblox...
+</p>
+        </div>
+        <!-- End iframe Game -->
+        <!-- Footer -->
+        <div class="footer">
+            <p><a href="index.html" style="color: white;">Back to Dashboard</a></p>
+            <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u" style="color: white;">Report Bug</a></p>
+        </div>
+        <!-- End Footer -->
+    </div>
+</body>
+</html>
