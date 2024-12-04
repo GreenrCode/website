@@ -9,7 +9,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap');
 
         body {
-            font-family: 'Noto Sans', sans-serif; /* Updated to Noto Sans */
+            font-family: 'Noto Sans', sans-serif;
             background-color: #f0f2f5;
             color: #333;
             margin: 0;
@@ -29,10 +29,10 @@
             margin-bottom: 20px;
         }
         .header img {
-            max-width: 120px; /* Maximum width */
-            height: auto; /* Maintain aspect ratio */
-            max-height: 150px; /* Maximum height */
-            object-fit: contain; /* Ensure the image fits within the box without stretching */
+            max-width: 120px;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
         }
         .header {
             background-color: gray;
@@ -41,8 +41,7 @@
             padding: 20px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Center content horizontally */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            justify-content: center;
         }
         .header a {
             color: white;
@@ -72,7 +71,7 @@
             border-radius: 8px;
             padding: 15px;
             flex-grow: 1;
-            flex-basis: calc(33.333% - 20px); /* 3 per row with gaps */
+            flex-basis: calc(33.333% - 20px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .category h4 {
@@ -112,37 +111,23 @@
         footer img {
             max-width: 100%;
         }
-        .popup {
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    display: none;
-    width: 80%;
-    max-width: 400px;
-}
-.popup h2 {
-    margin-top: 0;
-}
-.popup p {
-    margin-bottom: 10px;
-}
-.popup button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.popup button:hover {
-    background-color: #0056b3;
+
+        /* Style for the search bar */
+       .search-container {
+    margin: 20px auto; /* Auto margin on the left and right to center */
+    width: 100%; /* 100% width for responsiveness */
+    max-width: 500px; /* Set a max-width for the search bar */
+    display: flex;
+    justify-content: center; /* Centers the input horizontally */
 }
 
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -154,19 +139,35 @@
         document.getElementById("closePopup").addEventListener("click", function() {
             popup.style.display = "none";
         });
+
+        // Search functionality
+        const searchInput = document.getElementById("searchInput");
+        const gameLinks = document.querySelectorAll(".category a");
+
+        searchInput.addEventListener("input", function() {
+            const searchTerm = searchInput.value.toLowerCase();
+            gameLinks.forEach(link => {
+                const gameName = link.textContent.toLowerCase();
+                if (gameName.includes(searchTerm)) {
+                    link.style.display = "block";
+                } else {
+                    link.style.display = "none";
+                }
+            });
+        });
     });
-</script>
+    </script>
 
     <div class="header">
         <h1><img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;"></h1>
     </div>
     <div id="welcomePopup" class="popup">
-    <h2>LOOK HERE</h2>
-    <p>#1: Beau likes small children
-    <br>#2: If any of the games are blocked, report them using the "Report a Bug" form towards the bottom of the page.
-    <br>#3: How am I supposed to add Roblox and Fortnite. Your Chromebooks can't even run it.</p>
-    <button id="closePopup">Close</button>
-</div>
+        <h2>LOOK HERE</h2>
+        <p>#1: Beau likes small children
+        <br>#2: If any of the games are blocked, report them using the "Report a Bug" form towards the bottom of the page.
+        <br>#3: How am I supposed to add Roblox and Fortnite. Your Chromebooks can't even run it.</p>
+        <button id="closePopup">Close</button>
+    </div>
 
     <div class="container">
         <h1>Home</h1>
@@ -175,16 +176,21 @@
             <p>Last updated on 11/25/2024</p>
             <p>v2.1.0: Updated categories, 10,000 visitors! Scroll to the bottom to see the live counter.</p>
         </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
+        </div>
+
         <h3>Games</h3>
         <div class="category-container">
-            <!-- Repeat this block for each category -->
+            <!-- Repeat this block for each category (as shown in your original code) -->
             <div class="category">
                 <h4>OvO Games</h4>
                 <a href="ovo.html">OvO Game</a>
                 <a href="ovo2.html">OvO 2</a>
                 <a href="ovomulti.html">OvO Multiplayer</a>
             </div>
-            <!-- More categories here -->
             <div class="category">
                 <h4>MotoX3M Games</h4>
                 <a href="motox3mwinter.html">MotoX3M Winter</a>
@@ -194,7 +200,7 @@
                 <a href="motox3m33.html">MotoX3M 3</a>
                 <a href="motox3m2.html">MotoX3M 2</a>
             </div>
-            <div class="category">
+             <div class="category">
                 <h4>Arcade & Retro Games</h4>
                 <a href="snake.html">Snake</a>
                 <a href="https://oregontrail.ws/games/the-oregon-trail/play/">The Oregon Trail (Redirect)</a>
@@ -318,6 +324,9 @@
                 <a href="timer.html">Timer</a>
                 <a href="scrchoose.html">Screensavers</a>
             </div>
+        </div>
+    </div>
+  
         </div>
     </div>
   
