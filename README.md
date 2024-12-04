@@ -2,6 +2,8 @@ Hey, my name is Asher. This is the place to find unblocked games and other fun s
 
 CURRENT VERSION:
 
+v2.2.0: Just added a search bar.
+
 v2.1.0: Updated categories, 10,000 visitors! Scroll to the bottom to see the live counter.
 
 v2.0.0: Looks can be deceiving. Not anymore.
