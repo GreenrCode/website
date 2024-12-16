@@ -126,6 +126,12 @@
             background-color: #1e1e1e;
             color: #f0f2f5;
         }
+        .header.dark h1 {
+            color: white;
+        }
+        .container.dark h1 {
+            color: white;
+        }
 
         /* Toggle button styles */
         .dark-mode-toggle {
@@ -150,6 +156,7 @@
         const body = document.body;
         const header = document.querySelector(".header");
         const elementsToToggle = document.querySelectorAll(".textbox, .category");
+        const containerH1 = document.querySelector(".container h1");
 
         // Check if dark mode preference is saved in local storage
         if (localStorage.getItem("darkMode") === "true") {
@@ -167,16 +174,18 @@
         function enableDarkMode() {
             body.classList.add("dark");
             header.classList.add("dark");
+            containerH1.classList.add("dark");
             elementsToToggle.forEach(el => el.classList.add("dark"));
-            toggleButton.src = "light.jpg";
+            toggleButton.querySelector("img").src = "light.jpg";
             localStorage.setItem("darkMode", "true");
         }
 
         function disableDarkMode() {
             body.classList.remove("dark");
             header.classList.remove("dark");
+            containerH1.classList.remove("dark");
             elementsToToggle.forEach(el => el.classList.remove("dark"));
-            toggleButton.src = "dark.jpg";
+            toggleButton.querySelector("img").src = "dark.jpg";
             localStorage.setItem("darkMode", "false");
         }
     });
@@ -196,14 +205,14 @@
                 <a href="pacmanorig.html">Pac-Man Original</a>
 
             <p>Last updated on 12/16/2024</p>
-            <p>v2.3.0 Dark Mode, Light Mode, Oh My!</p>
+            <p>v2.2.0 Just added a search bar.</p>
         </div>
 
         <div class="search-container">
             <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
         </div>
 
-         <h3>Games</h3>
+     <h3>Games</h3>
         <div class="category-container">
             <!-- Repeat this block for each category (as shown in your original code) -->
             <div class="category">
@@ -352,6 +361,7 @@
   
         </div>
     </div>
+
     </div>
 
     <footer>
