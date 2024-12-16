@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -5,8 +6,16 @@
     <meta name="robots" content="noindex, follow" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Paper .io - Games - The HTML Project SL</title>
+    <title>Paper .io 2 - Games - The HTML Project SL</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
         .container {
             display: flex;
             justify-content: center;
@@ -18,44 +27,93 @@
             background-color: grey;
             color: white;
             text-align: center;
+            padding: 10px;
         }
         .game {
             width: 90%;
         }
+        h2 {
+            text-align: center;
+            color: #333;
+            transition: color 0.3s;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #121212;
+            color: #f0f2f5;
+        }
+        body.dark h2 {
+            color: #f0f2f5;
+        }
+        body.dark .footer {
+            background-color: #333;
+            color: #f0f2f5;
+        }
+        body.dark button {
+            background-color: #444;
+            color: #f0f2f5;
+        }
+        body.dark button:hover {
+            background-color: #666;
+        }
     </style>
 </head>
 <body>
-    <h2>Paper .io</h2>
+    <!-- Title -->
+    <h2>Paper .io 2</h2>
+
+    <!-- Main Container -->
     <div class="container">
-        <!-- iframe Game -->
+        <!-- Game Section -->
         <div class="game">
-            <iframe class="gm-iframe" id="gm-area" src="https://thehtmlproject.github.io/game1/file" width="1070" height="540" scrolling="none" frameborder="0" allowfullscreen></iframe>
+            <iframe class="gm-iframe" id="gm-area" src="https://thehtmlproject.github.io/game1/file/" width="1070" height="540" scrolling="none" frameborder="0" allowfullscreen></iframe>
             <div style="padding-top: 10px;"> 
-                <button class="btn theme-btn-1 btn-effect-1 text-uppercase" onclick="openFullscreen();">Full Screen</button>
+                <button onclick="openFullscreen();">Full Screen</button>
             </div>
-            <script>
-                var elem = document.getElementById("gm-area");
-                function openFullscreen() {
-                    if (elem.requestFullscreen) {
-                        elem.requestFullscreen();
-                    } else if (elem.webkitRequestFullscreen) { /* Safari */
-                        elem.webkitRequestFullscreen();
-                    } else if (elem.msRequestFullscreen) { /* IE11 */
-                        elem.msRequestFullscreen();
-                    }
-                }
-            </script>
-            <p>
-       For Max.
-            </p>
+            <p>For Max.</p>
         </div>
-        <!-- End iframe Game -->
         <!-- Footer -->
         <div class="footer">
-            <p><a href="dashboard.html" style="color: white;">Back to Dashboard</a></p>
-            <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=PE1WzVoeIkqjzr5jFs7J_7rxW38_NJVGgrFkHwKPmghUQ0hWV0xIMVVaVU1YWTM5MTNCRjUySllNWi4u" style="color: white;">Report Bug</a></p>
+            <p><a href="index.html" style="color: white;">Back to Dashboard</a></p>
+            <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u" style="color: white;">Report Bug</a></p>
         </div>
-        <!-- End Footer -->
     </div>
+
+    <script>
+        // Fullscreen functionality
+        var elem = document.getElementById("gm-area");
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Apply Dark Mode based on saved preference
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+
+            // Check if 'darkMode' is saved in localStorage
+            if (localStorage.getItem("darkMode") === "true") {
+                body.classList.add("dark");
+            }
+        });
+    </script>
 </body>
 </html>
