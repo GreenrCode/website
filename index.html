@@ -151,68 +151,76 @@
 </head>
 <body>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const toggleButton = document.getElementById("darkModeToggle");
-        const body = document.body;
-        const header = document.querySelector(".header");
-        const elementsToToggle = document.querySelectorAll(".textbox, .category");
-        const containerH1 = document.querySelector(".container h1");
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const header = document.querySelector(".header");
+    const elementsToToggle = document.querySelectorAll(".textbox, .category");
+    const containerH1 = document.querySelector(".container h1");
 
-        // Check if dark mode preference is saved in local storage
-        if (localStorage.getItem("darkMode") === "true") {
+    // Check if dark mode preference is saved in local storage
+    if (localStorage.getItem("darkMode") === "true") {
+        enableDarkMode();
+    }
+
+    toggleButton.addEventListener("click", function() {
+        if (body.classList.contains("dark")) {
+            disableDarkMode();
+        } else {
             enableDarkMode();
         }
+    });
 
-        toggleButton.addEventListener("click", function() {
-            if (body.classList.contains("dark")) {
-                disableDarkMode();
-            } else {
-                enableDarkMode();
-            }
-        });
+    function enableDarkMode() {
+        body.classList.add("dark");
+        header.classList.add("dark");
+        containerH1.classList.add("dark");
+        elementsToToggle.forEach(el => el.classList.add("dark"));
+        toggleButton.querySelector("img").src = "light.jpg";
+        localStorage.setItem("darkMode", "true");
+    }
 
-        function enableDarkMode() {
-            body.classList.add("dark");
-            header.classList.add("dark");
-            containerH1.classList.add("dark");
-            elementsToToggle.forEach(el => el.classList.add("dark"));
-            toggleButton.querySelector("img").src = "light.jpg";
-            localStorage.setItem("darkMode", "true");
-        }
+    function disableDarkMode() {
+        body.classList.remove("dark");
+        header.classList.remove("dark");
+        containerH1.classList.remove("dark");
+        elementsToToggle.forEach(el => el.classList.remove("dark"));
+        toggleButton.querySelector("img").src = "dark.jpg";
+        localStorage.setItem("darkMode", "false");
+    }
 
-        function disableDarkMode() {
-            body.classList.remove("dark");
-            header.classList.remove("dark");
-            containerH1.classList.remove("dark");
-            elementsToToggle.forEach(el => el.classList.remove("dark"));
-            toggleButton.querySelector("img").src = "dark.jpg";
-            localStorage.setItem("darkMode", "false");
-        }
+    // Search Functionality
+    const searchInput = document.getElementById("searchInput");
+    const categories = document.querySelectorAll(".category");
 
-        // Search Functionality
-        const searchInput = document.getElementById("searchInput");
-        const categories = document.querySelectorAll(".category");
-
-        searchInput.addEventListener("input", function() {
-            const query = searchInput.value.toLowerCase();
-            categories.forEach(category => {
-                const links = category.querySelectorAll("a");
-                let hasMatch = false;
-                links.forEach(link => {
-                    if (link.textContent.toLowerCase().includes(query)) {
-                        link.style.display = "block"; // Show link if it matches
-                        hasMatch = true;
-                    } else {
-                        link.style.display = "none"; // Hide link if it doesn't match
-                    }
-                });
-                // If no link matches, hide the entire category
-                category.style.display = hasMatch ? "block" : "none";
+    searchInput.addEventListener("input", function() {
+        const query = searchInput.value.toLowerCase();
+        categories.forEach(category => {
+            const links = category.querySelectorAll("a");
+            let hasMatch = false;
+            links.forEach(link => {
+                if (link.textContent.toLowerCase().includes(query)) {
+                    link.style.display = "block"; // Show link if it matches
+                    hasMatch = true;
+                } else {
+                    link.style.display = "none"; // Hide link if it doesn't match
+                }
             });
+            // If no link matches, hide the entire category
+            category.style.display = hasMatch ? "block" : "none";
         });
     });
-    </script>
 
+    // Close popup when "Close" button is clicked
+    const closePopupButton = document.getElementById("closePopup");
+    const welcomePopup = document.getElementById("welcomePopup");
+
+    closePopupButton.addEventListener("click", function() {
+        welcomePopup.style.display = "none"; // Hide the pop-up
+    });
+});
+</script>
     <div class="header">
         <img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;">
         <button id="darkModeToggle" class="dark-mode-toggle">
