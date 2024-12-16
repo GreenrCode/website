@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zxx">
 <head>
@@ -8,130 +9,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TITLEHERE - Games - The HTML Project SL</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin: 10px 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .game {
-            flex: 1;
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 10px;
-        }
-        .iframe-container {
-            flex: 1;
-            width: 100%;
-            position: relative;
-            padding-top: 56.25%; /* Aspect Ratio 16:9 */
-            background: #000;
-        }
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 10px 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .footer {
-            background-color: grey;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            width: 100%;
-        }
-        .footer a {
-            color: white;
-            text-decoration: none;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+h2 {
+    text-align: center;
+    color: #333;
+    margin: 10px 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+}
+.game {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Hide overflow */
+}
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    border: none;
+    object-fit: cover; /* Ensures the content scales while maintaining aspect ratio */
+}
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+.footer {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
 
-        /* Dark Mode Styles */
-        body.dark {
-            background-color: #121212;
-            color: #f0f2f5;
-        }
-        body.dark h2 {
-            color: #f0f2f5;
-        }
-        body.dark .footer {
-            background-color: #333;
-        }
-        body.dark button {
-            background-color: #444;
-        }
-        body.dark button:hover {
-            background-color: #666;
-        }
+/* Dark Mode Styles */
+body.dark {
+    background-color: #121212;
+    color: #f0f2f5;
+}
+body.dark h2 {
+    color: #f0f2f5;
+}
+body.dark .footer {
+    background-color: #333;
+}
+body.dark button {
+    background-color: #444;
+}
+body.dark button:hover {
+    background-color: #666;
+}
 
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .game {
-                max-width: 100%;
-                padding: 5%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .iframe-container {
-                padding-top: 75%; /* Aspect Ratio 4:3 */
-            }
-            h2 {
-                font-size: 1.5em;
-            }
-            button {
-                padding: 8px 16px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .game {
-                padding: 3%;
-            }
-            .iframe-container {
-                padding-top: 100%; /* Aspect Ratio 1:1 for smaller screens */
-            }
-            h2 {
-                font-size: 1.2em;
-            }
-            button {
-                padding: 6px 12px;
-            }
-        }
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .game {
+        max-width: 100%;
+        padding: 5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .iframe-container iframe {
+        height: 100%; /* Adjust to fit smaller screens */
+        width: 100%; /* Adjust to fit smaller screens */
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    button {
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game {
+        padding: 3%;
+    }
+    .iframe-container iframe {
+        height: 100%; /* Adjust to fit smaller screens */
+        width: 100%; /* Adjust to fit smaller screens */
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    button {
+        padding: 6px 12px;
+    }
+}
     </style>
 </head>
 <body>
