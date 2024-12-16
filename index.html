@@ -188,6 +188,28 @@
             toggleButton.querySelector("img").src = "dark.jpg";
             localStorage.setItem("darkMode", "false");
         }
+
+        // Search Functionality
+        const searchInput = document.getElementById("searchInput");
+        const categories = document.querySelectorAll(".category");
+
+        searchInput.addEventListener("input", function() {
+            const query = searchInput.value.toLowerCase();
+            categories.forEach(category => {
+                const links = category.querySelectorAll("a");
+                let hasMatch = false;
+                links.forEach(link => {
+                    if (link.textContent.toLowerCase().includes(query)) {
+                        link.style.display = "block"; // Show link if it matches
+                        hasMatch = true;
+                    } else {
+                        link.style.display = "none"; // Hide link if it doesn't match
+                    }
+                });
+                // If no link matches, hide the entire category
+                category.style.display = hasMatch ? "block" : "none";
+            });
+        });
     });
     </script>
 
@@ -197,29 +219,24 @@
             <img src="dark.jpg" alt="Toggle Dark Mode">
         </button>
     </div>
-<div id="welcomePopup" class="popup">
-        <h2>READ ME</h2>
-        <p>Okay, yes there is now dark mode. Toggle it on >>>>>> I am in the process of making the change to all of my games. See what it will look like by playing <a href="paper.html">Paper .io 2</a>. It looks SO COOL. If there is a problem, report the bug using the form below.
-        </p>
-        <button id="closePopup">Close</button>
-    </div>
+    
     <div class="container">
         <h1>Home</h1>
         <div class="textbox">
-            <strong>Newest games:   <br> <a href="leveldevil.html">Level Devil</a> <br>
+            <strong>Newest games: <br> <a href="leveldevil.html">Level Devil</a> <br>
                 <a href="pacmanorig.html">Pac-Man Original</a>
-
             <p>Last updated on 12/16/2024</p>
             <p>v2.2.0 Just added a search bar.</p>
         </div>
 
+        <!-- Search bar -->
         <div class="search-container">
             <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
         </div>
 
-     <h3>Games</h3>
+        <h3>Games</h3>
         <div class="category-container">
-            <!-- Repeat this block for each category (as shown in your original code) -->
+            <!-- Categories and games -->
             <div class="category">
                 <h4>OvO Games</h4>
                 <a href="ovo.html">OvO Game</a>
@@ -235,16 +252,16 @@
                 <a href="motox3m33.html">MotoX3M 3</a>
                 <a href="motox3m2.html">MotoX3M 2</a>
             </div>
-             <div class="category">
+            <div class="category">
                 <h4>Arcade & Retro Games</h4>
                 <a href="snake.html">Snake</a>
                 <a href="https://oregontrail.ws/games/the-oregon-trail/play/">The Oregon Trail (Redirect)</a>
                 <a href="ats.html">Aim The Square</a>
                 <a href="flappy.html">Flappy Bird</a>
                 <a href="https://flowlab.io/game/edit/2603658">Soulstice</a>
-                 <a href="pacmanorig.html">Pac-Man Original</a>
+                <a href="pacmanorig.html">Pac-Man Original</a>
             </div>
-            <div class="category">
+             <div class="category">
                 <h4>Google Games (Redirect)</h4>
                 <a href="https://g.co/kgs/6vFHhYD">Google Katamari</a>
                 <a href="gsnake.html">Google Snake</a>
@@ -344,7 +361,7 @@
         <div class="category-container">
             <div class="category">
                 <a href="https://thehtmlproject.github.io/allmygames/soundboard">Meme Soundboard</a>
-                <a href="tchat.html">[NEW] Chat! [NEW]</a>
+                <a href="tchat.html">Chat</a>
                 <a href="invidious.html">Invidious - YouTube Unblocked</a>
                 <a href="https://youtube.com/@the_tech_kid?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Sub to my YouTube</a>
                 <a href="https://sites.google.com/cusd.me/dudovo">Dud OvO</a>
