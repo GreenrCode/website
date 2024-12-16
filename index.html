@@ -19,6 +19,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            transition: background-color 0.3s, color 0.3s;
         }
         h1 {
             color: #333;
@@ -41,7 +42,7 @@
             padding: 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
         }
         .header a {
             color: white;
@@ -59,6 +60,7 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
         .category-container {
             display: flex;
@@ -73,6 +75,7 @@
             flex-grow: 1;
             flex-basis: calc(33.333% - 20px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
         }
         .category h4 {
             color: gray;
@@ -87,23 +90,6 @@
         .category a:hover {
             text-decoration: underline;
         }
-        .popup {
-            position: fixed;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: none;
-        }
-        .popup a {
-            color: gray;
-        }
-        .popup a:hover {
-            text-decoration: underline;
-        }
         footer {
             margin-top: 20px;
             color: #666;
@@ -112,15 +98,13 @@
             max-width: 100%;
         }
 
-        /* Style for the search bar */
-       .search-container {
-    margin: 20px auto; /* Auto margin on the left and right to center */
-    width: 100%; /* 100% width for responsiveness */
-    max-width: 500px; /* Set a max-width for the search bar */
-    display: flex;
-    justify-content: center; /* Centers the input horizontally */
-}
-
+        .search-container {
+            margin: 20px auto;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: center;
+        }
         .search-input {
             width: 100%;
             padding: 10px;
@@ -128,62 +112,91 @@
             border: 1px solid #ccc;
             font-size: 16px;
         }
+
+        /* Dark mode styles */
+        body.dark {
+            background-color: #121212;
+            color: #f0f2f5;
+        }
+        .header.dark {
+            background-color: #333;
+        }
+        .textbox.dark, .category.dark {
+            background-color: #1e1e1e;
+            color: #f0f2f5;
+        }
+
+        /* Toggle button styles */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ccc;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const popup = document.getElementById("welcomePopup");
-        popup.style.display = "block";
+        const toggleButton = document.getElementById("darkModeToggle");
+        const body = document.body;
+        const header = document.querySelector(".header");
+        const elementsToToggle = document.querySelectorAll(".textbox, .category");
 
-        document.getElementById("closePopup").addEventListener("click", function() {
-            popup.style.display = "none";
+        // Check if dark mode preference is saved in local storage
+        if (localStorage.getItem("darkMode") === "true") {
+            enableDarkMode();
+        }
+
+        toggleButton.addEventListener("click", function() {
+            if (body.classList.contains("dark")) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
         });
 
-        // Search functionality
-        const searchInput = document.getElementById("searchInput");
-        const gameLinks = document.querySelectorAll(".category a");
+        function enableDarkMode() {
+            body.classList.add("dark");
+            header.classList.add("dark");
+            elementsToToggle.forEach(el => el.classList.add("dark"));
+            localStorage.setItem("darkMode", "true");
+        }
 
-        searchInput.addEventListener("input", function() {
-            const searchTerm = searchInput.value.toLowerCase();
-            gameLinks.forEach(link => {
-                const gameName = link.textContent.toLowerCase();
-                if (gameName.includes(searchTerm)) {
-                    link.style.display = "block";
-                } else {
-                    link.style.display = "none";
-                }
-            });
-        });
+        function disableDarkMode() {
+            body.classList.remove("dark");
+            header.classList.remove("dark");
+            elementsToToggle.forEach(el => el.classList.remove("dark"));
+            localStorage.setItem("darkMode", "false");
+        }
     });
     </script>
 
     <div class="header">
         <h1><img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;"></h1>
+        <button id="darkModeToggle" class="dark-mode-toggle">Toggle Dark Mode</button>
     </div>
-<!-- <div id="welcomePopup" class="popup">
-        <h2>NEW MESSAGE</h2>
-        <p>Yes, I added a search bar. Enjoy! Shoutout Nolan for recommending it! Make sure to spread around the new link! bit.ly/thehtmlsl I have a feeling it got blocked at school, there has been a dip in visitors. Also, I please REPORT if there is a game that is not working. There is a form for that below and right <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">here</a>. Use it if a game is not working.
-        </p>
-        <button id="closePopup">Close</button>
-    </div> --> 
 
     <div class="container">
         <h1>Home</h1>
         <div class="textbox">
             <strong>Newest games:   <br> <a href="leveldevil.html">Level Devil</a> <br>
                 <a href="pacmanorig.html">Pac-Man Original</a>
-     
+
             <p>Last updated on 12/16/2024</p>
             <p>v2.2.0 Just added a search bar.</p>
         </div>
 
-        <!-- Search Bar -->
         <div class="search-container">
             <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
         </div>
 
-        <h3>Games</h3>
+       <h3>Games</h3>
         <div class="category-container">
             <!-- Repeat this block for each category (as shown in your original code) -->
             <div class="category">
@@ -332,7 +345,9 @@
   
         </div>
     </div>
-  
+
+    </div>
+
     <footer>
         <h2>People Count</h2>
         <a href="https://www.digits.net" target="_blank">
