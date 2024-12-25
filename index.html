@@ -22,9 +22,10 @@
             transition: background-color 0.3s, color 0.3s;
         }
         h1 {
-            color: #333;
-            margin-bottom: 0;
-        }
+    color: #333;  /* Default color for light mode */
+    font-weight: bold;  /* Bold font */
+    transition: color 0.3s;
+}
         img {
             border-radius: 8px;
             margin-bottom: 20px;
@@ -147,6 +148,179 @@
             width: 40px;
             height: 40px;
         }
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
+                0 4px 6px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: block;
+    transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
+}
+
+.popup h2, .popup p {
+    margin: 0 0 15px;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.popup a {
+    text-decoration: underline; /* Keep underline */
+    color: #007BFF; /* Default link color in light mode */
+    transition: color 0.3s ease;
+}
+
+.popup button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode specific styles */
+body.dark .popup {
+    background-color: #2c2c2c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 
+                0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+body.dark .popup h2, 
+body.dark .popup p {
+    color: #f0f2f5;
+}
+
+body.dark .popup a {
+    color: #fff; /* White link color in dark mode */
+}
+
+body.dark .popup button {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark .popup button:hover {
+    background-color: #555;
+}
+  transition: color 0.3s ease;
+}
+
+.popup button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
+}
+
+/* Dark mode specific styles */
+body.dark .popup {
+    background-color: #2c2c2c;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 
+                0 4px 6px rgba(0, 0, 0, 0.25);
+}
+
+body.dark .popup h2, 
+body.dark .popup p {
+    color: #f0f2f5;
+}
+
+body.dark .popup a {
+    color: #fff; /* White link color in dark mode */
+}
+
+body.dark .popup button {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark .popup button:hover {
+    background-color: #555;
+}
+
+/* Newest games links */
+.textbox a {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.textbox a:hover {
+    color: inherit;
+}
+
+/* Dark Mode styles for links */
+body.dark .textbox a {
+    color: #f0f2f5;  /* Light color for links in dark mode */
+}
+
+body.dark .textbox a:hover {
+    color: #ffcc00;  /* Optional: different hover color for links in dark mode */
+}
+/* Category Titles */
+/* Category Titles */
+.category h4 {
+    color: #333;  /* Default color for light mode */
+    font-weight: bold;  /* Bold font for all modes */
+    font-size: 1.2em;  /* Slightly larger font size */
+    transition: color 0.3s, font-weight 0.3s, font-size 0.3s;
+}
+
+/* Dark Mode styles for category titles */
+body.dark .category h4 {
+    color: #e0e0e0;  /* Lighter shade of white for dark mode */
+}
+
+
+/* Category Links */
+.category a {
+    color: #333;  /* Default color for light mode */
+    transition: color 0.3s;
+}
+
+/* Dark Mode styles for category links */
+body.dark .category a {
+    color: #f0f2f5;  /* White color for dark mode */
+}
+
+body.dark h1 {
+    color: #e0e0e0;  /* Lighter shade of white for dark mode */
+}
+/* Footer Text */
+footer p {
+    color: #333;  /* Default color for light mode */
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+/* Dark Mode styles for footer text */
+body.dark footer p {
+    color: #e0e0e0;  /* Lighter shade of white for dark mode */
+}
+
     </style>
 </head>
 <body>
@@ -228,8 +402,8 @@ document.addEventListener("DOMContentLoaded", function() {
         </button>
     </div>
     <div id="welcomePopup" class="popup">
-        <h2>READ ME</h2>
-        <p>Okay, yes there is now dark mode. Toggle it on >>>>>> I am in the process of making the change to all of my games. See what it will look like by playing <a href="paper.html">Paper .io 2</a>. It looks SO COOL. If there is a problem, report the bug using the form below.
+        <h2>Introducing MultiWeb!</h2>
+        <p>Now you can browse the internet (actually fast though) with no restrictions! Use any browser you want, whenever you want! Visit it <a href="multiweb.html">here</a>
         </p>
         <button id="closePopup">Close</button>
     </div>
@@ -238,8 +412,8 @@ document.addEventListener("DOMContentLoaded", function() {
         <div class="textbox">
             <strong>Newest games: <br> <a href="leveldevil.html">Level Devil</a> <br>
                 <a href="pacmanorig.html">Pac-Man Original</a>
-            <p>Last updated on 12/16/2024</p>
-            <p>v2.2.0 Just added a search bar.</p>
+            <p>Last updated on 12/25/2024</p>
+            <p>v2.3.0: MultiWeb, Browse Anything.</p>
         </div>
 
         <!-- Search bar -->
@@ -373,6 +547,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <h3>Fun</h3>
         <div class="category-container">
             <div class="category">
+                <a href="multiweb.html">MultiWeb, The Web Unblocked!</a>
                 <a href="https://thehtmlproject.github.io/allmygames/soundboard">Meme Soundboard</a>
                 <a href="tchat.html">Chat</a>
                 <a href="invidious.html">Invidious - YouTube Unblocked</a>
