@@ -138,6 +138,16 @@
             <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">Report Bug</a></p>
         </div>
     </div>
+<script>
+    // Apply Dark Mode based on saved preference
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
 
+            // Check if 'darkMode' is saved in localStorage
+            if (localStorage.getItem("darkMode") === "true") {
+                body.classList.add("dark");
+            }
+        });
+</script>
 </body>
 </html>
