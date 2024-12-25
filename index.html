@@ -63,13 +63,6 @@
             margin-bottom: 20px;
             transition: background-color 0.3s;
         }
-        .textbox a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .textbox a:hover {
-            text-decoration: underline;
-        }
         .category-container {
             display: flex;
             flex-wrap: wrap;
@@ -124,83 +117,20 @@
         /* Dark mode styles */
         body.dark {
             background-color: #121212;
-            color: #ffffff; /* Increased brightness for readability */
+            color: #f0f2f5;
         }
         .header.dark {
             background-color: #333;
         }
         .textbox.dark, .category.dark {
             background-color: #1e1e1e;
-            color: #ffffff; /* Increased brightness for readability */
-        }
-        .textbox.dark a {
-            color: #ffffff; /* Links in "Newest games" are white in dark mode */
-        }
-        .textbox.dark a:hover {
-            color: #007bff; /* Highlight link in blue when hovering */
-        }
-        .category.dark h4 {
-            color: #ffffff; /* Make category headers white in dark mode */
-        }
-        .category.dark a {
-            color: #ffffff; /* Make game links white in dark mode */
-        }
-        .category.dark a:hover {
-            color: #007bff; /* Highlight link in blue when hovering */
+            color: #f0f2f5;
         }
         .header.dark h1 {
             color: white;
         }
         .container.dark h1 {
             color: white;
-        }
-
-        /* Popup styles */
-        .popup {
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 6px 6px rgba(0, 0, 0, 0.22);
-            padding: 20px;
-            z-index: 1000;
-            text-align: left;
-            width: 80%;
-            max-width: 600px;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        .popup a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .popup a:hover {
-            text-decoration: underline;
-        }
-        .popup.dark {
-            background: #1e1e1e; /* Dark background for popup */
-            color: #ffffff; /* White text in dark mode */
-        }
-        .popup.dark a {
-            color: #ffffff; /* Links in the popup are white in dark mode */
-        }
-        .popup.dark a:hover {
-            color: #007bff; /* Highlight link in blue when hovering */
-        }
-        .popup h2 {
-            margin-top: 0;
-        }
-        .popup button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        .popup button:hover {
-            background: #0056b3;
         }
 
         /* Toggle button styles */
@@ -221,64 +151,88 @@
 </head>
 <body>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const toggleButton = document.getElementById("darkModeToggle");
-            const body = document.body;
-            const header = document.querySelector(".header");
-            const elementsToToggle = document.querySelectorAll(".textbox, .category");
-            const popup = document.getElementById("welcomePopup");
 
-            // Check if dark mode preference is saved in local storage
-            if (localStorage.getItem("darkMode") === "true") {
-                enableDarkMode();
-            }
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const header = document.querySelector(".header");
+    const elementsToToggle = document.querySelectorAll(".textbox, .category");
+    const containerH1 = document.querySelector(".container h1");
 
-            toggleButton.addEventListener("click", function() {
-                if (body.classList.contains("dark")) {
-                    disableDarkMode();
+    // Check if dark mode preference is saved in local storage
+    if (localStorage.getItem("darkMode") === "true") {
+        enableDarkMode();
+    }
+
+    toggleButton.addEventListener("click", function() {
+        if (body.classList.contains("dark")) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    function enableDarkMode() {
+        body.classList.add("dark");
+        header.classList.add("dark");
+        containerH1.classList.add("dark");
+        elementsToToggle.forEach(el => el.classList.add("dark"));
+        toggleButton.querySelector("img").src = "light.jpg";
+        localStorage.setItem("darkMode", "true");
+    }
+
+    function disableDarkMode() {
+        body.classList.remove("dark");
+        header.classList.remove("dark");
+        containerH1.classList.remove("dark");
+        elementsToToggle.forEach(el => el.classList.remove("dark"));
+        toggleButton.querySelector("img").src = "dark.jpg";
+        localStorage.setItem("darkMode", "false");
+    }
+
+    // Search Functionality
+    const searchInput = document.getElementById("searchInput");
+    const categories = document.querySelectorAll(".category");
+
+    searchInput.addEventListener("input", function() {
+        const query = searchInput.value.toLowerCase();
+        categories.forEach(category => {
+            const links = category.querySelectorAll("a");
+            let hasMatch = false;
+            links.forEach(link => {
+                if (link.textContent.toLowerCase().includes(query)) {
+                    link.style.display = "block"; // Show link if it matches
+                    hasMatch = true;
                 } else {
-                    enableDarkMode();
+                    link.style.display = "none"; // Hide link if it doesn't match
                 }
             });
-
-            function enableDarkMode() {
-                body.classList.add("dark");
-                header.classList.add("dark");
-                popup.classList.add("dark"); // Add dark class to popup
-                elementsToToggle.forEach(el => el.classList.add("dark"));
-                toggleButton.querySelector("img").src = "light.jpg";
-                localStorage.setItem("darkMode", "true");
-            }
-
-            function disableDarkMode() {
-                body.classList.remove("dark");
-                header.classList.remove("dark");
-                popup.classList.remove("dark"); // Remove dark class from popup
-                elementsToToggle.forEach(el => el.classList.remove("dark"));
-                toggleButton.querySelector("img").src = "dark.jpg";
-                localStorage.setItem("darkMode", "false");
-            }
-
-            // Close popup when "Close" button is clicked
-            const closePopupButton = document.getElementById("closePopup");
-
-            closePopupButton.addEventListener("click", function() {
-                popup.style.display = "none"; // Hide the pop-up
-            });
+            // If no link matches, hide the entire category
+            category.style.display = hasMatch ? "block" : "none";
         });
-    </script>
+    });
+
+    // Close popup when "Close" button is clicked
+    const closePopupButton = document.getElementById("closePopup");
+    const welcomePopup = document.getElementById("welcomePopup");
+
+    closePopupButton.addEventListener("click", function() {
+        welcomePopup.style.display = "none"; // Hide the pop-up
+    });
+});
+</script>
     <div class="header">
         <img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;">
         <button id="darkModeToggle" class="dark-mode-toggle">
             <img src="dark.jpg" alt="Toggle Dark Mode">
         </button>
     </div>
-   <!-- <div id="welcomePopup" class="popup">
+    <div id="welcomePopup" class="popup">
         <h2>READ ME</h2>
-        <p>
+        <p>Okay, yes there is now dark mode. Toggle it on >>>>>> I am in the process of making the change to all of my games. See what it will look like by playing <a href="paper.html">Paper .io 2</a>. It looks SO COOL. If there is a problem, report the bug using the form below.
         </p>
         <button id="closePopup">Close</button>
-    </div> -->
+    </div>
     <div class="container">
         <h1>Home</h1>
         <div class="textbox">
@@ -293,18 +247,158 @@
             <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
         </div>
 
-        <!-- Categories and games -->
         <h3>Games</h3>
         <div class="category-container">
+            <!-- Categories and games -->
             <div class="category">
                 <h4>OvO Games</h4>
                 <a href="ovo.html">OvO Game</a>
                 <a href="ovo2.html">OvO 2</a>
                 <a href="ovomulti.html">OvO Multiplayer</a>
             </div>
-            <!-- Additional categories... -->
+            <div class="category">
+                <h4>MotoX3M Games</h4>
+                <a href="motox3mwinter.html">MotoX3M Winter</a>
+                <a href="spooky.html">MotoX3M Spooky</a>
+                <a href="poolparty.html">MotoX3M Pool Party</a>
+                <a href="motox3m3.html">MotoX3M</a>
+                <a href="motox3m33.html">MotoX3M 3</a>
+                <a href="motox3m2.html">MotoX3M 2</a>
+            </div>
+            <div class="category">
+                <h4>Arcade & Retro Games</h4>
+                <a href="snake.html">Snake</a>
+                <a href="https://oregontrail.ws/games/the-oregon-trail/play/">The Oregon Trail (Redirect)</a>
+                <a href="ats.html">Aim The Square</a>
+                <a href="flappy.html">Flappy Bird</a>
+                <a href="https://flowlab.io/game/edit/2603658">Soulstice</a>
+                <a href="pacmanorig.html">Pac-Man Original</a>
+            </div>
+             <div class="category">
+                <h4>Google Games (Redirect)</h4>
+                <a href="https://g.co/kgs/6vFHhYD">Google Katamari</a>
+                <a href="gsnake.html">Google Snake</a>
+                <a href="https://doodles.google/doodle/celebrating-popcorn/">Google Popcorn</a>
+                <a href="https://www.google.com/logos/2010/pacman10-hp.html">Google Pacman</a>
+                <a href="https://www.google.com/logos/2019/july4th19/r6/july4th19.html">Google Baseball</a>
+                <a href="https://www.google.com/logos/2024/moon/r3/moon.html">Google Moon Game</a>
+                <a href="glefeud.html">Google Feud (Parody)</a>
+                
+            </div>
+
+            <div class="category">
+                <h4>Clicker Games</h4>
+                <a href="https://thehtmlproject.github.io/game6/">Cookie Clicker</a>
+                <a href="doge.html">Doge Miner</a>
+            </div>
+            <div class="category">
+                <h4>Racing Games</h4>
+                <a href="templerun2.html">Temple Run 2</a>
+                <a href="subway.html">Subway Surfers</a>
+                <a href="subwayrunner.html">Subway Runner 💀</a>
+                <a href="run3.html">Run 3</a>
+                <a href="tunnel.html">Tunnel Rush</a>
+                <a href="slope.html">Slope Run</a>
+                <a href="slope3.html">Slope 3</a>
+                <a href="surf.html">Edge Surf</a>
+            </div>
+        
+            <div class="category">
+                <h4>Tetris</h4>
+      
+                <a href="tetris.html">Tetris (Smart)</a>
+                <a href="tetrisclassic.html">Tetris (Classic)</a>
+               <a href="twitchtet.html">Twitch Tetris</a>
+            </div>
+        
+            <div class="category">
+                <h4>Racing and Driving Games</h4>
+                <a href="drift.html">Drift Boss</a>
+                <a href="snow.html">Snowball .io</a>
+                <a href="scrap.html">Scrap Metal 3</a>
+                <a href="slowroads.html">Slow Roads .io</a>
+                <a href="clustertruck.html">Clustertruck</a>
+                     <a href="monster.html">Monster Tracks</a>
+                <a href="jelly.html">Jelly Truck</a>
+                <a href="drivemad.html">Drive Mad</a>
+            </div>
+            <div class="category">
+                <h4>Platform and Adventure Games</h4>
+                <a href="hole.html">Hole .io</a>
+           
+                <a href="smash.html">Stack Ball</a>
+                <a href="eggy.html">Eggy Car</a>
+                <a href="fnaf.html">Five Nights at Freddys</a>
+                <a href="fnaf2.html">Five Nights at Freddys 2</a>
+                <a href="https://thehtmlproject.github.io/game23/file/">Super Mario 64 (Fullscreen)</a>
+                <a href="bit.html">Bit Life</a>
+                <a href="geometry.html">Geometry Dash (Scratch)</a>
+                <a href="bikeracer.html">Stickman Bike</a>
+                <a href="bottle.html">Bottle Flip 3D</a>
+            </div>
+            <div class="category">
+                <h4>Sports and Simulation Games</h4>
+                <a href="basket.html">Basket Random</a>
+                <a href="volleyball.html">Volleyball Random</a>
+                <a href="friday.html">Friday Night Funkin'</a>
+                <a href="sausage.html">Sausage Flip</a>
+                <a href="hook.html">Stick Man Hook</a>
+                <a href="tiny.html">Tiny Fishing</a>
+                <a href="retro.html">Retro Bowl</a>
+                <a href="bballstars.html">Basketball Stars</a>
+                <a href="rsd.html">Rocket Soccer Derby</a>
+                <a href="gunspin.html">Gun Spin</a>
+            </div>
+            <div class="category">
+                <h4>Action & Multiplayer Games</h4>
+                <a href="paper.html">Paper .io 2</a>
+                <a href="https://thehtmlproject.github.io/game22/">1v1-LOL (Fullscreen)</a>
+                <a href="https://thehtmlproject.github.io/game3/file/">Just Fall LOL (Fullscreen)</a>
+                <a href="slope2plr.html">Slope Multiplayer</a>
+                <a href="bitplanes.html">Bit Planes</a>
+                <a href="amongus.html">Among Us</a>
+                <a href="burrito.html">BurritoCraft</a>
+                <a href="bison.html">Burrito Bison</a>
+                <a href="aim.html">Aim Trainer</a>
+            </div>
+            <div class="category">
+                <h4>Puzzle Games</h4>
+                <a href="2048.html">2048</a>
+                <a href="hardest.html">World's Hardest Game</a>
+             
+                <a href="blockblast.html">Block Blast</a>
+                <a href="https://thehtmlproject.github.io/game25/">Chess (fullscreen)</a>
+            </div>
+        </div>
+        <h3>Fun</h3>
+        <div class="category-container">
+            <div class="category">
+                <a href="https://thehtmlproject.github.io/allmygames/soundboard">Meme Soundboard</a>
+                <a href="tchat.html">Chat</a>
+                <a href="invidious.html">Invidious - YouTube Unblocked</a>
+                <a href="https://youtube.com/@the_tech_kid?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Sub to my YouTube</a>
+                <a href="https://sites.google.com/cusd.me/dudovo">Dud OvO</a>
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUMzBPVTlLRE41MzhYWTU4RlJFRTZERTRLVi4u">Pruxy Sign-up Form</a>
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZURTRTUU1MMlNaN0ozSVU1U0g3RE9ZMEZGUC4u">Request a Game</a>
+                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">Report a Bug</a>
+            </div>
+        </div>
+        <h3>Utilities</h3>
+        <div class="category-container">
+            <div class="category">
+                <a href="calc.html">Calculator</a>
+                <a href="map.html">Map</a>
+                <a href="timer.html">Timer</a>
+                <a href="scrchoose.html">Screensavers</a>
+            </div>
         </div>
     </div>
+  
+        </div>
+    </div>
+
+    </div>
+
     <footer>
         <h2>People Count</h2>
         <a href="https://www.digits.net" target="_blank">
