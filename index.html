@@ -325,76 +325,65 @@ body.dark footer p {
 </head>
 <body>
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButton = document.getElementById("darkModeToggle");
+            const body = document.body;
+            const header = document.querySelector(".header");
+            const elementsToToggle = document.querySelectorAll(".textbox, .category");
+            const containerH1 = document.querySelector(".container h1");
 
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById("darkModeToggle");
-    const body = document.body;
-    const header = document.querySelector(".header");
-    const elementsToToggle = document.querySelectorAll(".textbox, .category");
-    const containerH1 = document.querySelector(".container h1");
+            // Check if dark mode preference is saved in local storage
+            if (localStorage.getItem("darkMode") === "true") {
+                enableDarkMode();
+            }
 
-    // Check if dark mode preference is saved in local storage
-    if (localStorage.getItem("darkMode") === "true") {
-        enableDarkMode();
-    }
-
-    toggleButton.addEventListener("click", function() {
-        if (body.classList.contains("dark")) {
-            disableDarkMode();
-        } else {
-            enableDarkMode();
-        }
-    });
-
-    function enableDarkMode() {
-        body.classList.add("dark");
-        header.classList.add("dark");
-        containerH1.classList.add("dark");
-        elementsToToggle.forEach(el => el.classList.add("dark"));
-        toggleButton.querySelector("img").src = "light.jpg";
-        localStorage.setItem("darkMode", "true");
-    }
-
-    function disableDarkMode() {
-        body.classList.remove("dark");
-        header.classList.remove("dark");
-        containerH1.classList.remove("dark");
-        elementsToToggle.forEach(el => el.classList.remove("dark"));
-        toggleButton.querySelector("img").src = "dark.jpg";
-        localStorage.setItem("darkMode", "false");
-    }
-
-    // Search Functionality
-    const searchInput = document.getElementById("searchInput");
-    const categories = document.querySelectorAll(".category");
-
-    searchInput.addEventListener("input", function() {
-        const query = searchInput.value.toLowerCase();
-        categories.forEach(category => {
-            const links = category.querySelectorAll("a");
-            let hasMatch = false;
-            links.forEach(link => {
-                if (link.textContent.toLowerCase().includes(query)) {
-                    link.style.display = "block"; // Show link if it matches
-                    hasMatch = true;
+            toggleButton.addEventListener("click", function() {
+                if (body.classList.contains("dark")) {
+                    disableDarkMode();
                 } else {
-                    link.style.display = "none"; // Hide link if it doesn't match
+                    enableDarkMode();
                 }
             });
-            // If no link matches, hide the entire category
-            category.style.display = hasMatch ? "block" : "none";
+
+            function enableDarkMode() {
+                body.classList.add("dark");
+                header.classList.add("dark");
+                containerH1.classList.add("dark");
+                elementsToToggle.forEach(el => el.classList.add("dark"));
+                toggleButton.querySelector("img").src = "light.jpg";
+                localStorage.setItem("darkMode", "true");
+            }
+
+            function disableDarkMode() {
+                body.classList.remove("dark");
+                header.classList.remove("dark");
+                containerH1.classList.remove("dark");
+                elementsToToggle.forEach(el => el.classList.remove("dark"));
+                toggleButton.querySelector("img").src = "dark.jpg";
+                localStorage.setItem("darkMode", "false");
+            }
+
+            // Popup logic
+            const welcomePopup = document.getElementById("welcomePopup");
+            const closePopupButton = document.getElementById("closePopup");
+            const dontShowAgainCheckbox = document.getElementById("dontShowAgain");
+
+            // Check if the "Do not show again" box was checked previously
+			if (localStorage.getItem("popupClosed") === "true") {
+                welcomePopup.style.display = "none"; // Hide the popup if the user chose not to show again
+           } else {
+               welcomePopup.style.display = "block"; // Show the popup if not yet closed
+           } 
+            // Close popup when "Close" button is clicked
+            closePopupButton.addEventListener("click", function() {
+                if (dontShowAgainCheckbox.checked) {
+                    // Store the user's choice to not show the popup again
+                    localStorage.setItem("popupClosed", "true");
+                }
+                welcomePopup.style.display = "none"; // Hide the popup
+            });
         });
-    });
-
-    // Close popup when "Close" button is clicked
-    const closePopupButton = document.getElementById("closePopup");
-    const welcomePopup = document.getElementById("welcomePopup");
-
-    closePopupButton.addEventListener("click", function() {
-        welcomePopup.style.display = "none"; // Hide the pop-up
-    });
-});
-</script>
+    </script>
     <div class="header">
         <img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;">
         <button id="darkModeToggle" class="dark-mode-toggle">
@@ -407,6 +396,9 @@ document.addEventListener("DOMContentLoaded", function() {
             Game Masker. Now you can mask games behind an about:blank tab. Visit it <a href="https://sites.google.com/view/game-masker/">here</a><br>
             Multiweb, coming soon! What it can do: You can browse the internet (actually fast though) with no restrictions! Use any browser you want, whenever you want! Visit it <a href="notyet.html">here</a> (no signup required).
         </p>
+		 <label>
+            <input type="checkbox" id="dontShowAgain"> Don't show this message again
+        </label><br>
         <button id="closePopup">Close</button>
     </div>
     <div class="container">
