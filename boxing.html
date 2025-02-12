@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zxx">
+<head>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/7784/7784482.png">
+    <meta name="robots" content="noindex, follow" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxing Random - Games - The HTML Project SL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin: 10px 0;
+            font-size: 32px; /* Fixed font size */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1;
+            width: 100%;
+            padding: 0 5%;
+            box-sizing: border-box;
+        }
+
+        .game {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            width: 100%;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 56.25vw; /* 16:9 Aspect Ratio based on viewport width */
+            max-height: 56.25vh; /* Limit the height to the viewport */
+            overflow: hidden;
+            background: #000;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px; /* Fixed padding */
+            margin: 10px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px; /* Fixed font size */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            background-color: grey;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            font-size: 14px; /* Fixed font size */
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #121212;
+            color: #f0f2f5;
+        }
+
+        body.dark h2 {
+            color: #f0f2f5;
+        }
+
+        body.dark .footer {
+            background-color: #333;
+        }
+
+        body.dark button {
+            background-color: #444;
+        }
+
+        body.dark button:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Boxing Random</h2>
+
+    <div class="container">
+        <div class="game">
+            <div class="iframe-container">
+                <iframe id="gm-area" src="https://abinbins.github.io/a77/boxing-random" allowfullscreen></iframe>
+            </div>
+            <button onclick="openFullscreen();">Full Screen</button>
+            <p>Not sure if this one is unblocked, give it a try, if it isn't report it in the report a bug form below vvv.</p>
+        </div>
+
+        <div class="footer">
+            <p><a href="index.html">Back to Dashboard</a></p>
+            <p><a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">Report Bug</a></p>
+        </div>
+    </div>
+
+    <script>
+        var elem = document.getElementById("gm-area");
+
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) { /* Safari */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE11 */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        // Apply Dark Mode based on saved preference
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+
+            // Check if 'darkMode' is saved in localStorage
+            if (localStorage.getItem("darkMode") === "true") {
+                body.classList.add("dark");
+            }
+        });
+    </script>
+</body>
+</html>
