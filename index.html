@@ -396,14 +396,7 @@ document.addEventListener("DOMContentLoaded", function() {
         welcomePopup.style.display = "none"; // Hide the pop-up
     });
 });
-        document.addEventListener("DOMContentLoaded", function () {
-    const currentMessage = "New Message‎"; // Change this text when you want the popup to reappear
-
-    if (localStorage.getItem("popupMessage") !== currentMessage) {
-        alert(currentMessage);
-        localStorage.setItem("popupMessage", currentMessage);
-    }
-});
+  
 </script>
     <div class="header">
         <img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;">
@@ -605,6 +598,16 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 
     </div>
+    <script>
+              document.addEventListener("DOMContentLoaded", function () {
+    const currentMessage = "New Message‎"; // Change this text when you want the popup to reappear
+
+    if (localStorage.getItem("popupMessage") !== currentMessage) {
+        alert(currentMessage);
+        localStorage.setItem("popupMessage", currentMessage);
+    }
+});
+    </script>
 <h2>People Count</h2>
     <footer>
         <section id="people"></section>
