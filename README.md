@@ -2,11 +2,9 @@ Hey, my name is Asher. This is the place to find unblocked games and other fun s
 
 CURRENT VERSION:
 
-v2.4.0: Holiday Changes for You
+v2.3.0: Holiday Changes for You
 
 OTHER VERSIONS:
-
-v2.3.0: MultiWeb, Browse Anything.
 
 v2.2.0: Dark Mode, Light Mode, Oh My!
 
