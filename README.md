@@ -1,4 +1,4 @@
-Hey, my name is Asher. This is the place to find unblocked games and other fun stuff. I hope you enjoy! Go to https://tinyurl.com/thehtmlsl to see the homepage. Contact me at thehtmlproject@post.com
+Hey, my name is Asher. This is the place to find unblocked games and other fun stuff. I hope you enjoy! Go to https://tinyurl.com/thehtmlsl to see the homepage. Contact me at contact@thehtmlproject.icu
 
 CURRENT VERSION:
 
