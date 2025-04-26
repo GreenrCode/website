@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITLEHERE - Games - The HTML Project</title>
+    <title>Moto X3M 3 - Games - The HTML Project</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             display: flex;
             flex-direction: column;
             height: 100vh;
-            overflow: hidden; /* Prevent scrolling */
+            overflow: hidden;
             transition: background-color 0.3s, color 0.3s;
         }
 
@@ -25,7 +25,7 @@
             text-align: center;
             color: #333;
             margin: 10px 0;
-            font-size: 32px; /* Fixed font size */
+            font-size: 32px;
         }
 
         .container {
@@ -51,8 +51,8 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            height: 56.25vw; /* 16:9 Aspect Ratio based on viewport width */
-            max-height: 56.25vh; /* Limit the height to the viewport */
+            height: 56.25vw;
+            max-height: 56.25vh;
             overflow: hidden;
             background: #000;
         }
@@ -70,16 +70,22 @@
             background-color: #007BFF;
             color: white;
             border: none;
-            padding: 10px 20px; /* Fixed padding */
+            padding: 10px 20px;
             margin: 10px 0;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            font-size: 16px; /* Fixed font size */
+            font-size: 16px;
         }
 
         button:hover {
             background-color: #0056b3;
+        }
+
+        p a {
+            color: black;
+            text-decoration: underline;
+            transition: color 0.3s;
         }
 
         .footer {
@@ -88,12 +94,13 @@
             text-align: center;
             padding: 10px;
             width: 100%;
-            font-size: 14px; /* Fixed font size */
+            font-size: 14px;
         }
 
         .footer a {
             color: white;
             text-decoration: none;
+            transition: color 0.3s;
         }
 
         /* Dark Mode Styles */
@@ -117,18 +124,27 @@
         body.dark button:hover {
             background-color: #666;
         }
+
+        body.dark p a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        body.dark .footer a {
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <h2>TITLEHERE</h2>
+    <h2>MotoX3M 3</h2>
 
     <div class="container">
         <div class="game">
             <div class="iframe-container">
-                <iframe id="gm-area" src="LINKHERE" allowfullscreen></iframe>
+                <iframe id="gm-area" src="/game29/moto-frame/other/moto-x3m-3/" allowfullscreen></iframe>
             </div>
             <button onclick="openFullscreen();">Full Screen</button>
-            <p>DESCRIPTIONHERE</p>
+            <p>#3. This game was apparently experiencing some glitches, so you may need to <a href="/game29/moto-frame/other/moto-x3m-3/" target="_blank" onclick="alert('You are entering into a fullscreen interface. See you later!');">open it in a new tab.</a></p>
         </div>
 
         <div class="footer">
@@ -143,18 +159,15 @@
         function openFullscreen() {
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
-            } else if (elem.webkitRequestFullscreen) { /* Safari */
+            } else if (elem.webkitRequestFullscreen) {
                 elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) { /* IE11 */
+            } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
             }
         }
 
-        // Apply Dark Mode based on saved preference
         document.addEventListener("DOMContentLoaded", function() {
             const body = document.body;
-
-            // Check if 'darkMode' is saved in localStorage
             if (localStorage.getItem("darkMode") === "true") {
                 body.classList.add("dark");
             }
