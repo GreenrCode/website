@@ -6,6 +6,7 @@ v2.4.0: MultiWeb, browse anything.
 
 
 OTHER VERSIONS:
+
 v2.3.0: Holiday Changes for You
 
 v2.2.0: Dark Mode, Light Mode, Oh My!
