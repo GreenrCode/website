@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark this link - Fun & Extras - The HTML Project</title>
+    <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #fff;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header {
+            background-color: gray;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        #site-logo {
+            max-width: 120px;
+            height: auto;
+        }
+
+        .back-to-dashboard {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-dashboard:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .content-container {
+            flex: 1;
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            color: #222;
+            margin: 20px 0;
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .main-link {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .main-link:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background-color: #121212;
+            color: #f0f2f5;
+        }
+
+        body.dark .header {
+            background-color: #333;
+        }
+
+        body.dark .back-to-dashboard {
+            color: #f0f2f5;
+        }
+
+        body.dark .back-to-dashboard:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark h1, body.dark h2, body.dark h3 {
+            color: #f0f2f5;
+        }
+
+        body.dark p {
+            color: #f0f2f5;
+        }
+
+        body.dark a {
+            color: #64B5F6;
+        }
+
+        body.dark .main-link {
+            background-color: #1e88e5;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .main-link:hover {
+            background-color: #42a5f5;
+        }
+    </style>
+</head>
+<body class="light">
+    <div class="header">
+        <a href="index.html" class="back-to-dashboard">Back to Dashboard</a>
+        <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo" />
+    </div>
+
+    <div class="content-container">
+        <h2>Bookmark this page!</h2>
+
+        <p>This page contains a link that will ALWAYS redirect to the newest version of my site. So if the newest release gets blocked, make sure you tell me in the <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u">Report Bug</a> form, but then click this link that you have bookmarked on your bookmarks bar and my site will eventually update and be unblocked for you.</p>
+
+        <a href="https://thehtmlproject1.github.io/redirectsl/" class="main-link">Click here for the newest link</a>
+
+        <h1>Instructions</h1>
+
+        <h3>Method 1:
+            <ul>
+                <li>Press Control and D</li>
+                <li>On the dropdown, click "Bookmarks Bar"</li>
+                <li>Click "Done"</li>
+            </ul>
+        </h3>
+        <h3>Method 2:
+            <ul>
+                <li>Click the star at the end of the URL bar (it should say thehtmlproject1.github.io). The star will be at the end.</li>
+                <li>On the dropdown, click "Bookmarks Bar"</li>
+                <li>Click "Done"</li>
+            </ul>
+        </h3>
+
+        <h1>You can also access my website from: </h1>
+        <h3>
+            <ul>
+                <li><a href="https://thehtmlproject.com">thehtmlproject.com</a></li>
+                <li><a href="https://thehtmlproject.icu">thehtmlproject.icu</a></li>
+                <li><a href="https://thedailyshouter.com">thedailyshouter.com</a></li>
+            </ul>
+        </h3>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            const siteLogo = document.getElementById("site-logo");
+
+            // Function to apply dark mode
+            function applyDarkMode() {
+                body.classList.add("dark");
+                body.classList.remove("light");
+                siteLogo.src = "https://assets.thehtmlproject.com/img/logodark.png";
+            }
+
+            // Function to apply light mode
+            function applyLightMode() {
+                body.classList.remove("dark");
+                body.classList.add("light");
+                siteLogo.src = "https://assets.thehtmlproject.com/icon.jpeg";
+            }
+
+            // Check for dark mode preference from thehtmlproject.com's cache
+            // This assumes the 'darkMode' localStorage item is set by the main site.
+            // If it's not present or is 'false', it will default to light mode.
+            if (localStorage.getItem("darkMode") === "true") {
+                applyDarkMode();
+            } else {
+                applyLightMode();
+            }
+        });
+    </script>
+</body>
+</html>
