@@ -1,647 +1,128 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-005PR6H454"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maintenance - The HTML Project</title>
+  <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+  
+  <style>
+    body {
+      font-family: 'Noto Sans', sans-serif;
+      background-color: #fff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
 
-  gtag('config', 'G-005PR6H454');
-</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="Icon.jpeg">
-    <title>Home - The HTML Project</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100&display=swap');
+    .header {
+      background-color: transparent;
+      color: inherit;
+      padding: 20px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        body {
-            font-family: 'Noto Sans', sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        h1 {
-    color: #333;  /* Default color for light mode */
-    font-weight: bold;  /* Bold font */
-    transition: color 0.3s;
-}
-        img {
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .header img {
-            max-width: 120px;
-            height: auto;
-            max-height: 150px;
-            object-fit: contain;
-        }
-        .header {
-            background-color: gray;
-            color: white;
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-        .header a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            padding: 20px;
-        }
-        .textbox {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            transition: background-color 0.3s;
-        }
-        .category-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: space-between;
-        }
-        .category {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 15px;
-            flex-grow: 1;
-            flex-basis: calc(33.333% - 20px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: background-color 0.3s;
-        }
-        .category h4 {
-            color: gray;
-            margin-bottom: 10px;
-        }
-        .category a {
-            display: block;
-            color: black;
-            text-decoration: none;
-            margin: 5px 0;
-        }
-        .category a:hover {
-            text-decoration: underline;
-        }
-        footer {
-            margin-top: 20px;
-            color: #666;
-        }
-        footer img {
-            max-width: 100%;
-        }
+    #site-logo {
+      max-width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
 
-        .search-container {
-            margin: 20px auto;
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            justify-content: center;
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
+    .maintenance-message {
+      padding: 25px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      width: 90%;
+      margin-top: 80px;
+    }
 
-        /* Dark mode styles */
-        body.dark {
-            background-color: #121212;
-            color: #f0f2f5;
-        }
-        .header.dark {
-            background-color: #333;
-        }
-        .textbox.dark, .category.dark {
-            background-color: #1e1e1e;
-            color: #f0f2f5;
-        }
-        .header.dark h1 {
-            color: white;
-        }
-        .container.dark h1 {
-            color: white;
-        }
+    .maintenance-message h1 {
+      margin-top: 0;
+      color: #333;
+      font-size: 28px;
+    }
 
-        /* Toggle button styles */
-        .dark-mode-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            outline: none;
-        }
-        .dark-mode-toggle img {
-            width: 40px;
-            height: 40px;
-        }
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 
-                0 4px 6px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    display: block;
-    transition: transform 0.3s ease-in-out, background-color 0.3s, color 0.3s;
-}
+    .maintenance-message p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #555;
+    }
 
-.popup h2, .popup p {
-    margin: 0 0 15px;
-    color: #333;
-    transition: color 0.3s;
-}
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #121212;
+        color: #f0f2f5;
+      }
 
-.popup a {
-    text-decoration: underline; /* Keep underline */
-    color: #007BFF; /* Default link color in light mode */
-    transition: color 0.3s ease;
-}
+      .maintenance-message {
+        background-color: #1a1a1a;
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+      }
 
-.popup button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
+      .maintenance-message h1 {
+        color: #f0f2f5;
+      }
 
-.popup button:hover {
-    background-color: #0056b3;
-}
+      .maintenance-message p {
+        color: #ccc;
+      }
 
-/* Dark mode specific styles */
-body.dark .popup {
-    background-color: #2c2c2c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 
-                0 4px 6px rgba(0, 0, 0, 0.25);
-}
+      #site-logo {
+        content: url("https://assets.thehtmlproject.com/img/logodark.png");
+      }
+    }
 
-body.dark .popup h2, 
-body.dark .popup p {
-    color: #f0f2f5;
-}
-
-body.dark .popup a {
-    color: #fff; /* White link color in dark mode */
-}
-
-body.dark .popup button {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark .popup button:hover {
-    background-color: #555;
-}
-  transition: color 0.3s ease;
-}
-
-.popup button {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.popup button:hover {
-    background-color: #0056b3;
-}
-
-/* Dark mode specific styles */
-body.dark .popup {
-    background-color: #2c2c2c;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 
-                0 4px 6px rgba(0, 0, 0, 0.25);
-}
-
-body.dark .popup h2, 
-body.dark .popup p {
-    color: #f0f2f5;
-}
-
-body.dark .popup a {
-    color: #fff; /* White link color in dark mode */
-}
-
-body.dark .popup button {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark .popup button:hover {
-    background-color: #555;
-}
-
-/* Newest games links */
-.textbox a {
-    color: inherit;
-    text-decoration: underline;
-    transition: color 0.3s;
-}
-
-.textbox a:hover {
-    color: inherit;
-}
-
-/* Dark Mode styles for links */
-body.dark .textbox a {
-    color: #f0f2f5;  /* Light color for links in dark mode */
-}
-
-body.dark .textbox a:hover {
-    color: #ffcc00;  /* Optional: different hover color for links in dark mode */
-}
-/* Category Titles */
-/* Category Titles */
-.category h4 {
-    color: #333;  /* Default color for light mode */
-    font-weight: bold;  /* Bold font for all modes */
-    font-size: 1.2em;  /* Slightly larger font size */
-    transition: color 0.3s, font-weight 0.3s, font-size 0.3s;
-}
-
-/* Dark Mode styles for category titles */
-body.dark .category h4 {
-    color: #e0e0e0;  /* Lighter shade of white for dark mode */
-}
-
-
-/* Category Links */
-.category a {
-    color: #333;  /* Default color for light mode */
-    transition: color 0.3s;
-}
-
-/* Dark Mode styles for category links */
-body.dark .category a {
-    color: #f0f2f5;  /* White color for dark mode */
-}
-
-body.dark h1 {
-    color: #e0e0e0;  /* Lighter shade of white for dark mode */
-}
-/* Footer Text */
-footer p {
-    color: #333;  /* Default color for light mode */
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-/* Dark Mode styles for footer text */
-body.dark footer p {
-    color: #e0e0e0;  /* Lighter shade of white for dark mode  <div id="welcomePopup" class="popup">
-     */
-}
-
-    </style>
+    @media (max-width: 768px) {
+      .maintenance-message h1 {
+        font-size: 24px;
+      }
+      .maintenance-message p {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <script>
+  <div class="header">
+    <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo" />
+  </div>
 
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById("darkModeToggle");
-    const body = document.body;
-    const header = document.querySelector(".header");
-    const elementsToToggle = document.querySelectorAll(".textbox, .category");
-    const containerH1 = document.querySelector(".container h1");
+  <div class="maintenance-message">
+    <h1>THP is currently under maintenance and will be back up soon.</h1>
+  </div>
 
-    // Check if dark mode preference is saved in local storage
-    if (localStorage.getItem("darkMode") === "true") {
-        enableDarkMode();
-    }
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const siteLogo = document.getElementById("site-logo");
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        siteLogo.src = "https://assets.thehtmlproject.com/img/logodark.png";
+      }
 
-    toggleButton.addEventListener("click", function() {
-        if (body.classList.contains("dark")) {
-            disableDarkMode();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+          siteLogo.src = "https://assets.thehtmlproject.com/img/logodark.png";
         } else {
-            enableDarkMode();
+          siteLogo.src = "https://assets.thehtmlproject.com/icon.jpeg";
         }
+      });
     });
-
-    function enableDarkMode() {
-        body.classList.add("dark");
-        header.classList.add("dark");
-        containerH1.classList.add("dark");
-        elementsToToggle.forEach(el => el.classList.add("dark"));
-        toggleButton.querySelector("img").src = "light.jpg";
-        localStorage.setItem("darkMode", "true");
-    }
-
-    function disableDarkMode() {
-        body.classList.remove("dark");
-        header.classList.remove("dark");
-        containerH1.classList.remove("dark");
-        elementsToToggle.forEach(el => el.classList.remove("dark"));
-        toggleButton.querySelector("img").src = "dark.jpg";
-        localStorage.setItem("darkMode", "false");
-    }
-
-    // Search Functionality
-    const searchInput = document.getElementById("searchInput");
-    const categories = document.querySelectorAll(".category");
-
-    searchInput.addEventListener("input", function() {
-        const query = searchInput.value.toLowerCase();
-        categories.forEach(category => {
-            const links = category.querySelectorAll("a");
-            let hasMatch = false;
-            links.forEach(link => {
-                if (link.textContent.toLowerCase().includes(query)) {
-                    link.style.display = "block"; // Show link if it matches
-                    hasMatch = true;
-                } else {
-                    link.style.display = "none"; // Hide link if it doesn't match
-                }
-            });
-            // If no link matches, hide the entire category
-            category.style.display = hasMatch ? "block" : "none";
-        });
-    });
-
-    // Close popup when "Close" button is clicked
-    const closePopupButton = document.getElementById("closePopup");
-    const welcomePopup = document.getElementById("welcomePopup");
-
-    closePopupButton.addEventListener("click", function() {
-        welcomePopup.style.display = "none"; // Hide the pop-up
-    });
-});
-  
-</script>
-    <div class="header">
-        <img src="Icon.jpeg" alt="Logo" style="width:120px;height:150px;">
-        <button id="darkModeToggle" class="dark-mode-toggle">
-            <img src="dark.jpg" alt="Toggle Dark Mode">
-        </button>
-    </div>
-    
-       
-     
-    <div class="container">
-         <section id="home"></section>
-        <h1>Home</h1>
-        <div class="category-container">
- <div class="category">
-       <h2>⚠️⚠️⚠️ Message 5/22/2025 ⚠️⚠️⚠️</h2>
-       <p>Hey guys, just wanted to let you know that awesome changes are coming soon to my website. There will be some insane stuff, like pruxys, YouTube & YouTube music without ads, and some other cool stuff. It may seem that I am idle on my site, but there is a lot of internal work that has to be done. Continue to use my site how it is, and check back to see the changes move along. Thank you!</p>
-    </div>
-        <div class="category"> 
-            <h3>Newest games:</h3><strong><a href="johnnyupgrade.html">Johnny Upgrade</a>
-                <a href="funnyshooter.html">Funny Shooter</a>
-                                              <a href="timeshooter3.html">Time Shooter 3</a>
-                                              <a href="hoverracerdrive.html">Hover Racer Drive</a>
-                           <a href="deepestsword.html">Deepest Sword</a>
-              
-<p>____________________________________________________________</p>
-            <p>Last updated on 5/13/2025</p>
-            <p>v2.4.0: MultiWeb, browse anything.</p>
-        </div>
-        </div>
-
-        <!-- Search bar -->
-        
-<section id="games"></section>
-        <h2>Games</h2>
-         <div class="search-container">
-            <input id="searchInput" type="text" class="search-input" placeholder="Search games...">
-        </div>
-        <div class="category-container">
-            <!-- Categories and games -->
-            <div class="category">
-                <h4>OvO Games</h4>
-                <a href="ovo.html">OvO Game</a>
-                <a href="ovo2.html">OvO 2</a>
-                <a href="ovomulti.html">OvO Multiplayer</a>
-            </div>
-            <div class="category">
-                <h4>MotoX3M Games</h4>
-                <a href="motox3mwinter.html">MotoX3M Winter</a>
-                <a href="spooky.html">MotoX3M Spooky</a>
-                <a href="poolparty.html">MotoX3M Pool Party</a>
-                <a href="motox3m3.html">MotoX3M</a>
-                <a href="motox3m33.html">MotoX3M 3</a>
-                <a href="motox3m2.html">MotoX3M 2</a>
-            </div>
-            <div class="category">
-                <h4>Arcade & Retro Games</h4>
-                <a href="snake.html">Snake</a>
-                <a href="https://oregontrail.ws/games/the-oregon-trail/play/" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Oregon Trail</a>
-                <a href="ats.html">Aim The Square</a>
-                <a href="flappy.html">Flappy Bird</a>
-               <a href="https://flowlab.io/game/edit/2603658" target="_blank" onclick="alert('You will be launched into an interface that you need to exit to play the game. Press the play icon towards the bottom left of the screen to start playing the game. It is an excellent game BTW. You are leaving The HTML Project. See you later!');">Soulstice (Student Made Game)</a>
-                <a href="pacmanorig.html">Pac-Man Original</a>
-            </div>
-             <div class="category">
-                <h4>Google Games</h4>
-                 <a href="https://g.co/kgs/6vFHhYD" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Katamari</a>
-                <a href="gsnake.html">Snake</a>
-                  <a href="https://doodles.google/doodle/celebrating-popcorn/" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Popcorn</a>
-                <a href="https://www.google.com/logos/2010/pacman10-hp.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Pac-Man</a>
-                <a href="https://www.google.com/logos/2019/july4th19/r6/july4th19.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Baseball</a>
-               <a href="https://www.google.com/logos/2024/moon/r3/moon.html" target="_blank" onclick="alert('You are leaving The HTML Project. See you later!');">Moon</a>
-                <a href="glefeud.html">Google Feud (Parody)</a>
-                
-            </div>
-
-            <div class="category">
-                <h4>Clicker Games</h4>
-                <a href="/game6/" onclick="alert('You are entering into a fullscreen interface because this game cannot be embedded. See you later!);">Cookie Clicker</a>
-                <a href="doge.html">Doge Miner</a>
-            </div>
-            <div class="category">
-                <h4>Racing Games</h4>
-                <a href="templerun2.html">Temple Run 2</a>
-                <a href="subway.html">Subway Surfers</a>
-                <a href="subwayrunner.html">Subway Runner 💀</a>
-                <a href="run3.html">Run 3</a>
-                <a href="tunnel.html">Tunnel Rush</a>
-                <a href="slope.html">Slope Run</a>
-                <a href="slope3.html">Slope 3</a>
-                <a href="surf.html">Edge Surf</a>
-            </div>
-        
-           
-            <div class="category">
-                <h4>Racing and Driving Games</h4>
-                <a href="drift.html">Drift Boss</a>
-                <a href="snow.html">Snowball .io</a>
-                <a href="scrap.html">Scrap Metal 3</a>
-                <a href="slowroads.html">Slow Roads .io</a>
-                <a href="clustertruck.html">Clustertruck</a>
-                     <a href="monster.html">Monster Tracks</a>
-                <a href="jelly.html">Jelly Truck</a>
-                <a href="drivemad.html">Drive Mad</a>
-                <a href="hoverracerdrive.html">Hover Racer Drive</a>
-            </div>
-            <div class="category">
-                <h4>Platform and Adventure Games</h4>
-                <a href="pvz.html">Plants vs. Zombies</a>
-                <a href="sandgame.html">Sand Game</a>
-                <a href="getaway.html">Getaway Shootout</a>
-                <a href="hole.html">Hole .io</a>
-           <a href="deepestsword.html">Deepest Sword</a>
-                <a href="smash.html">Stack Ball</a>
-                <a href="eggy.html">Eggy Car</a>
-                <a href="fnaf.html">Five Nights at Freddy's</a>
-                <a href="fnaf2.html">Five Nights at Freddy's 2</a>
-                <a href="/game23/" target="_blank" onclick="alert('You are entering into a full screen interface. You may also need to reload the page and scroll down about 10 times to get it to work. See you later!');">Super Mario 64</a>
-                <a href="bit.html">Bit Life</a>
-                <a href="geometry.html">Geometry Dash (Scratch)</a>
-                <a href="bikeracer.html">Stickman Bike</a>
-                <a href="johnnyupgrade.html">Johnny Upgrade</a>
-                
-            </div>
-            <div class="category">
-                <h4>Sports and Simulation Games</h4>
-                <a href="crazycattle3d">Crazy Cattle 3D</a>
-                <a href="boxing.html">Boxing Random</a>
-                <a href="basket.html">Basket Random</a>
-                <a href="volleyball.html">Volleyball Random</a>
-                <a href="friday.html">Friday Night Funkin'</a>
-                <a href="sausage.html">Sausage Flip</a>
-                <a href="hook.html">Stickman Hook</a>
-                <a href="tiny.html">Tiny Fishing</a>
-                <a href="retro.html">Retro Bowl</a>
-                 <a href="/game46/" onclick="alert('You are entering into a fullscreen interface because this game cannot be embedded. See you later!);">Retro Bowl College</a>
-                <a href="bballstars.html">Basketball Stars</a>
-                <a href="rsd.html">Rocket Soccer Derby</a>
-                <a href="gunspin.html">Gun Spin</a>
-                <a href="sushiria.html">Papa's Sushiria</a>
-                <a href="papaspizzaria.html">Papa's Pizzaria</a>
-                <a href="papasburgeria.html">Papa's Burgeria</a>
-                <a href="basketbros.html">Basket Bros</a>
-            </div>
-            <div class="category">
-                <h4>Action & Multiplayer Games</h4>
-                <a href="zombsroyale.html">Zombs Royale</a>
-                <a href="paper.html">Paper .io 2</a>
-                <a href="/game22/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">1v1 .LOL</a>
-                <a href="/game3/file/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">Just Fall .LOL</a>
-                <a href="slope2plr.html">Slope Multiplayer</a>
-                <a href="bitplanes.html">Bit Planes</a>
-                <a href="amongus.html">Among Us</a>
-                <a href="burrito.html">BurritoCraft</a>
-                <a href="bison.html">Burrito Bison</a>
-                <a href="aim.html">Aim Trainer</a>
-                <a href="timeshooter3.html">Time Shooter 3</a>
-                <a href="funnyshooter.html">Funny Shooter</a>
-            </div>
-            <div class="category">
-                <h4>Puzzle Games</h4>
-                <a href="2048.html">2048</a>
-                <a href="hardest.html">World's Hardest Game</a>
-             <a href="bloxorz.html">Bloxorz</a>
-                <a href="blockblast.html">Block Blast</a>
-            
-                <a href="/game25/" target="_blank" onclick="alert('You are entering into a full screen interface. See you later!');">Chess</a>
-                <a href="littlealc2.html">Little Alchemy 2</a>
-                <a href="imposquiz.html">Impossible Quiz</a>
-                <a href="tetris.html">Tetris (Smart)</a>
-                <a href="tetrisclassic.html">Tetris (Classic)</a>
-               <a href="twitchtet.html">Twitch Tetris</a>
-            </div>
-        </div>
-        <section id="fun"></section>
-        <h2>Fun & Extras</h2>
-         
-        <div class="category-container">
-            <div class="category">
-                <a href="https://thehtmlproject.github.io/ytmobile">Visit Bing Mobile</a>
-                <a href="https://discord.thehtmlproject.com">Join The HTML Project's Discord Server</a>
-            
-                <a href="https://sites.google.com/view/thehtmlprojectemulatorjs/home">EmulatorJS</a>
-               <a href="https://tlk.io/thehtmlprojectchat">The HTML Project Chat</a>
-                <a href="https://sites.google.com/view/thehtmlprojectmultiweb/home">MultiWeb, browse anything.</a>
-                <a href="https://controlled.thehtmlproject.com">Control my LED</a>
-                <a href="/theoldproject/index.html" target="_blank">The Very First Version of my Website</a>
-                <a href="https://www.youtube.com/watch?v=ufwLANtaFfI" target="_blank">Definately NOT a Rick Roll</a>
-              <a href="https://thehtmlproject1.github.io/redirectsl/bookmark.html" style="color: yellow;">The Link That Will ALWAYS Redirect Here</a>
-            <a href="/extras/index.html">More Tools (The Special Place, Game Masker)</a>
-             <a href="mailto:contact@thehtmlproject.com">Email Me</a>
-                <a href="/allmygames/soundboard" target="_blank">Meme Soundboard</a>
-                <a href="invidious.html">Invidious - YouTube Unblocked</a>
-                <a href="https://linktr.ee/asherthetechkid" target="_blank" rel="noopener noreferrer">Sub to my YouTube on my Linktree</a>
-               
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZURTRTUU1MMlNaN0ozSVU1U0g3RE9ZMEZGUC4u" target="_blank">Request a Game</a>
-                <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAATcuH4ZUN1owVTQ0RzBHMVJVUDlMVUc5MzdaNENHMi4u" target="_blank">Report a Bug</a>
-            </div>
-        </div>
-         <section id="utilities"></section>
-        <h2>Utilities</h2>
-        
-        <div class="category-container">
-            <div class="category">
-                <a href="calc.html">Calculator</a>
-                <a href="map.html">Map</a>
-                <a href="timer.html">Timer</a>
-                <a href="scrchoose.html">Screensavers</a>
-            </div>
-        </div>
-    </div>
-  
-        </div>
-    </div>
-
-    </div>
-    <script>
-              document.addEventListener("DOMContentLoaded", function () {
-    const currentMessage = "New Message"; 
-
-    if (localStorage.getItem("popupMessage") !== currentMessage) {
-        alert(currentMessage);
-        localStorage.setItem("popupMessage", currentMessage);
-    }
-});
-    </script>
-<h2>People Count</h2>
-    <footer>
-        <section id="people"></section>
-        
-         
-        <a href="https://www.digits.net" target="_blank">
-            <img src="https://counter.digits.net/?counter={39c382c5-39a1-7604-d558-6161ab6f43d6}&template=simple" 
-                alt="Hit Counter by Digits">
-        </a>
-        <p>Made with 💚 by Asher from The HTML Project</p>
-    </footer>
+  </script>
 </body>
 </html>
