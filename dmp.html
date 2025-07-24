@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkMode = localStorage.getItem('darkMode');
+        if (window.parent) {
+            window.parent.postMessage({ type: 'darkModePreference', darkMode: darkMode }, 'https://gaming.thehtmlproject.com');
+        }
+    });
+</script>
+</head>
+<body>
+    </body>
+</html>
