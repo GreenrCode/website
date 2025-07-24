@@ -1,6 +1,0 @@
-To-Do:
->Add footer to all pages except for home with home, about, request change, signout
->Center widgets
->Find aim the square from w3schools
->Make 3 utilities: Map, Timer, Calculator
->Add signup form to login screen
