@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The HTML Project</title>
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/loader.css">
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/button.css">
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/link.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <svg class="logo-anim spin" viewBox="0 0 512 512">
+      <path class="dash" d="M105 256l80-80M105 256l80 80M407 256l-80-80M407 256l-80 80M222 420 L290 92"/>
+    </svg>
+    <button id="fallback" onclick="window.location.href = redirectURL">Click here to get redirected</button>
+  </div>
+
+  <script>
+    const redirectURL = "https://discord.gg/DDkrC9brCM";
+    let redirected = false;
+
+    setTimeout(() => {
+      window.location.href = redirectURL;
+      redirected = true;
+    }, 1500);
+
+    setTimeout(() => {
+      if (!redirected) {
+        document.getElementById('fallback').style.display = 'inline-block';
+      }
+    }, 3000);
+  </script>
+</body>
+</html>
