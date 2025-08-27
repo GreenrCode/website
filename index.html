@@ -1,128 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="auto">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Maintenance - The HTML Project</title>
   <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-  
-  <style>
-    body {
-      font-family: 'Noto Sans', sans-serif;
-      background-color: #fff;
-      color: #222;
-      margin: 0;
-      padding: 0;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .header {
-      background-color: transparent;
-      color: inherit;
-      padding: 20px;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #site-logo {
-      max-width: 120px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    .maintenance-message {
-      padding: 25px;
-      background-color: #f9f9f9;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-      max-width: 600px;
-      width: 90%;
-      margin-top: 80px;
-    }
-
-    .maintenance-message h1 {
-      margin-top: 0;
-      color: #333;
-      font-size: 28px;
-    }
-
-    .maintenance-message p {
-      font-size: 18px;
-      line-height: 1.7;
-      color: #555;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #f0f2f5;
-      }
-
-      .maintenance-message {
-        background-color: #1a1a1a;
-        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-      }
-
-      .maintenance-message h1 {
-        color: #f0f2f5;
-      }
-
-      .maintenance-message p {
-        color: #ccc;
-      }
-
-      #site-logo {
-        content: url("https://assets.thehtmlproject.com/img/logodark.png");
-      }
-    }
-
-    @media (max-width: 768px) {
-      .maintenance-message h1 {
-        font-size: 24px;
-      }
-      .maintenance-message p {
-        font-size: 16px;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300..900;1,300..900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/beta/index/style.css" />
 </head>
 <body>
-  <div class="header">
-    <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="Logo" />
-  </div>
+  <header class="header">
+    <img id="site-logo" src="https://assets.thehtmlproject.com/icon.jpeg" alt="The HTML Project logo" />
+  </header>
 
-  <div class="maintenance-message">
-    <h1>THP is currently under maintenance and will be back up soon.</h1>
-  </div>
+  <main class="wrap">
+    <div class="card">
+      <div class="icon-row">
+        <span class="material-symbols-outlined wrench">build</span>
+        <span class="material-symbols-outlined cone">construction</span>
+      </div>
+      <h1 class="title">We’ll be right back</h1>
+      <p class="subtitle">THP is currently undergoing maintenance to improve performance and reliability.</p>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const siteLogo = document.getElementById("site-logo");
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        siteLogo.src = "https://assets.thehtmlproject.com/img/logodark.png";
-      }
+      <div class="status">
+        <div class="dot"></div>
+        <span class="status-text">Status: Fixing Games</span>
+      </div>
 
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        if (event.matches) {
-          siteLogo.src = "https://assets.thehtmlproject.com/img/logodark.png";
-        } else {
-          siteLogo.src = "https://assets.thehtmlproject.com/icon.jpeg";
-        }
-      });
-    });
-  </script>
+  
+
+      <div class="actions">
+        <a href="https://thehtmlproject.com" class="btn">
+          <span class="material-symbols-outlined">home</span>
+          Return to Dashboard
+        </a>
+        <a href="https://thehtmlproject.com/contact" class="btn secondary" target="_blank" rel="noopener noreferrer">
+          <span class="material-symbols-outlined">feedback</span>
+          Contact Us
+        </a>
+      </div>
+
+
+    </div>
+  </main>
+
+  <script src="https://assets.thehtmlproject.com/script/beta/index/script.js" defer></script>
 </body>
 </html>
