@@ -4,10 +4,9 @@
    <link rel="icon" href="https://assets.thehtmlproject.com/icon.jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The HTML Project</title>
-  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/loader.css">
-  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/button.css">
-  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/link.css">
+  <title>Redirecting - The HTML Project</title>
+ 
+  <link rel="stylesheet" href="https://assets.thehtmlproject.com/css/redirectsplash/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,21 +16,6 @@
     </svg>
     <button id="fallback" onclick="window.location.href = redirectURL">Click here to get redirected</button>
   </div>
-
-  <script>
-    const redirectURL = "https://discord.gg/DDkrC9brCM";
-    let redirected = false;
-
-    setTimeout(() => {
-      window.location.href = redirectURL;
-      redirected = true;
-    }, 1500);
-
-    setTimeout(() => {
-      if (!redirected) {
-        document.getElementById('fallback').style.display = 'inline-block';
-      }
-    }, 3000);
-  </script>
+  <script src="https://assets.thehtmlproject.com/script/redirectsplash/script.js" defer></script>
 </body>
 </html>
